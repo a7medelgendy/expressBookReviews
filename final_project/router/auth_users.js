@@ -43,11 +43,12 @@ regd_users.post("/login", (req, res) => {
 
 });
 
-// Add a book review
+// Add/modifiy a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
   const username = req.data.username;
   const isbn = req.params.isbn;
-  const reviewText = req.body.review;
+  const reviewText = req.query.review;
+  //const reviewText = req.body.review;
   if (!username) {
     return res.status(401).json({ error: 'You must be logged in to post a review.' });
   }
